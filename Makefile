@@ -1,11 +1,14 @@
+ENV = $(CURDIR)\env
+PIP = $(ENV)\bin\pip
+
 env:
-	virtualenv env
+	virtualenv $(ENV)
 
 deps: env
-	env/bin/pip install -U pip wheel
-	env/bin/pip install -r requirements.txt
+	$(PIP) install -U pip wheel
+	$(PIP) install -r requirements.txt
 
 clean:
-	rm -rf env
+	rm -rf $(ENV)
 
 .PHONY: deps clean
